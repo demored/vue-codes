@@ -1,0 +1,19 @@
+<!--计算属性 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id ="test">
+	<ul v-for="data in items">{{data}}</ul>
+</div>
+
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#test',
+		data:{
+			item:[1,2,3,4]
+		},
+		computed:{
+			items:function(){
+				return this.item.reverse();
+			}
+		}
+	})
+</script>

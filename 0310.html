@@ -1,0 +1,45 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id ="test">
+	<ul v-for="data in items">{{data.message}}</ul>
+	<p v-for="id in ids">{{id}}</p>
+	<h5 v-for="(v,index) in objects">{{index}} - {{v}}</h5>
+
+	<ul >
+	  <template v-for="item in items">
+	    <li>{{ item.message }}</li>
+	  </template>
+	</ul>
+
+</div>
+
+<div id="event">
+	<p v-on:click="fuck($event)">点击我</p>
+</div>
+
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#test',
+		data:{
+			items:[
+				{message:'hello'},
+				{message:'world'}
+			],
+			ids:[1,2,3,4],
+			objects:{name:'张三',age:70}
+		}
+	});
+	vm.ids[0] = 2;
+	//Vue.set(vm.ids,0,100);
+	vm.$set(vm.ids , 0 , 100);
+	vm.ids.splice(0,2,99); //替换
+
+	var vm2 = new Vue({
+		el:'#event',
+		methods:{
+			fuck:function(event){
+				alert('fuck you');
+				console.log(event);
+			}
+		}
+	})
+</script>
